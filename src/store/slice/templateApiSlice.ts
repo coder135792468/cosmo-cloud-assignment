@@ -44,31 +44,26 @@ export const templateApi = createApi({
       },
     }),
 
-
-    getBestTime: builder.query<any, Object>({
-      // <Type of data the call will return, Type of parameter being passed to the query function>
-      query: () => {
-        return { url: "api/mail/getmax" };
-      },
-    }),
     addTemplate: builder.mutation({
       query: (body) => ({
-        url: "api/mail",
+        url: "api/users",
         method: "POST",
         body,
-      }),
-    }),
-    scheduleJob: builder.mutation({
-      query: (body) => ({
-        url: "api/schedule/mail",
-        method: "POST",
-        body,
+        headers:{
+          projectId:'66ac77c349cca49a0822f2ad',
+          environmentId:'66ac77c349cca49a0822f2ae'
+         } 
       }),
     }),
     deleteTemplate: builder.mutation({
       query: (id) => ({
-        url: "api/templates/" + id,
+        url: "api/users/" + id,
         method: "DELETE",
+        body:{},
+        headers:{
+          projectId:'66ac77c349cca49a0822f2ad',
+          environmentId:'66ac77c349cca49a0822f2ae'
+         } 
       }),
     }),
   }),
@@ -76,9 +71,7 @@ export const templateApi = createApi({
 
 export const {
   useGetAllTemplatesQuery,
-  useGetBestTimeQuery,
   useGetCurrTemplateQuery,
   useAddTemplateMutation,
-  useScheduleJobMutation,
   useDeleteTemplateMutation,
 } = templateApi;
