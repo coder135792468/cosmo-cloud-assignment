@@ -38,12 +38,12 @@ export const Cards = () => {
     if(!isLoading)loadMoreData();
   },[isLoading]);
 
-  return isLoading?<p>Loading...</p>:(
+  return isLoading?<p className="text-center">Loading...</p>:(
     <div className="px-6 py-4">
       <div>
         {(!isSearching?searchData:templates)?.map((data:any)=><Card {...data}/>)}
       </div>
-      {(isSearching)&&<div className="flex justify-center">
+      {(isSearching)&&!isLoading&&<div className="flex justify-center">
          {(templates.length !== data.page.total)&&<Button className="bg-[#dfdfdf] text-[#838282] px-4" onClick={loadMoreData} variant={'outline'}>Load More <ArrowDownToDot /></Button>}
       </div>}
     </div>
