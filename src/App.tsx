@@ -1,9 +1,12 @@
-import { Button } from "@/components/ui/button"
+import { Cards } from "./components/cards";
+import Header from "./components/header";
 
+ 
 export default function App() {
   return (
     <div>
-      <Button>Click me</Button>
+       <Header/>
+       <Cards/>
     </div>
   )
 }
